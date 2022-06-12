@@ -1,0 +1,140 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Videos/BetterVideo.ogv" type="VideoStream" id=1]
+[ext_resource path="res://Scripts/VideoPlayer.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/Shoguns Clan.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Fonts/ChubbyChoo-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://OST/main_menu_sgm.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Scripts/Visualiser.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+outline_size = 2
+outline_color = Color( 0.223529, 1, 0.0784314, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="Theme" id=4]
+Button/colors/font_color = Color( 1, 0.0784314, 0.576471, 1 )
+Button/colors/font_color_disabled = Color( 0.901961, 0.901961, 0.901961, 0.2 )
+Button/colors/font_color_focus = Color( 1, 0.0784314, 0.576471, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0.458824, 0.901961, 0.854902, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 1 )
+Button/styles/disabled = SubResource( 6 )
+Button/styles/focus = SubResource( 7 )
+Button/styles/hover = SubResource( 5 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 8 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 100
+font_data = ExtResource( 3 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 4 )
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 1 )
+autoplay = true
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+show_behind_parent = true
+anchor_left = 0.1
+anchor_top = 0.363
+anchor_right = 0.433
+anchor_bottom = 0.889
+margin_top = -0.0400085
+margin_right = 0.639954
+margin_bottom = -0.120056
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+margin_left = 250.0
+margin_right = 388.0
+margin_bottom = 72.0
+size_flags_horizontal = 4
+text = "PLAY"
+
+[node name="Hangar" type="Button" parent="VBoxContainer"]
+margin_left = 211.0
+margin_top = 76.0
+margin_right = 427.0
+margin_bottom = 148.0
+size_flags_horizontal = 4
+text = "HANGAR"
+
+[node name="ShipDealer" type="Button" parent="VBoxContainer"]
+margin_left = 138.0
+margin_top = 152.0
+margin_right = 501.0
+margin_bottom = 224.0
+size_flags_horizontal = 4
+text = "SHIP DEALER"
+
+[node name="CharacterSelect" type="Button" parent="VBoxContainer"]
+margin_left = 34.0
+margin_top = 228.0
+margin_right = 604.0
+margin_bottom = 300.0
+size_flags_horizontal = 4
+text = "CHARACTER SELECT"
+
+[node name="Z" type="Button" parent="VBoxContainer"]
+margin_left = 301.0
+margin_top = 304.0
+margin_right = 337.0
+margin_bottom = 376.0
+size_flags_horizontal = 4
+text = "Z"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+margin_left = 256.0
+margin_top = 380.0
+margin_right = 382.0
+margin_bottom = 452.0
+size_flags_horizontal = 4
+text = "QUIT"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.15
+anchor_top = 0.059
+anchor_right = 0.817
+anchor_bottom = 0.178
+margin_top = 0.279995
+margin_right = -0.640137
+margin_bottom = -0.23999
+custom_colors/font_color = Color( 1, 0.0784314, 0.576471, 1 )
+custom_colors/font_color_shadow = Color( 0.223529, 1, 0.0784314, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/line_spacing = 2
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 2
+custom_fonts/font = SubResource( 9 )
+text = " SPACE GIRLS MADNESS"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -15.0
+autoplay = true
+
+[node name="Visualiser" type="Node2D" parent="AudioStreamPlayer"]
+position = Vector2( 320, 392 )
+script = ExtResource( 6 )
